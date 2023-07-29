@@ -1,0 +1,10 @@
+{
+    "locales": ["en", "pt-br"],
+    "defaultLocale": "pt-br",
+    "pages": {
+        "*": ["common"],
+        "/": ["home"],
+        "/login": ["login"],
+        "/register": ["register"]
+    }
+}

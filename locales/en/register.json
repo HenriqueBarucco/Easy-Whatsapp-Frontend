@@ -1,0 +1,23 @@
+{
+    "title": "Create an account",
+    "description": "Enter your details below to create your account",
+    "form": {
+        "username": "Username",
+        "username-placeholder": "Enter your username",
+        "name": "Name",
+        "name-placeholder": "Enter your full name",
+        "email": "Email",
+        "email-placeholder": "Enter your email address",
+        "password": "Password",
+        "submit": "Create Account"
+    },
+    "error": {
+        "username-min": "Username must be at least 2 characters.",
+        "username-space": "Username must not contain spaces.",
+        "password-min": "Password must be at least 6 characters.",
+        "name-min": "Name must be at least 2 characters.",
+        "email-invalid": "Email must be a valid email address."
+    },
+    "have-account": "Already have an account?",
+    "login-account": "Login"
+}

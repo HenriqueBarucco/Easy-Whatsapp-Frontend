@@ -1,0 +1,23 @@
+{
+    "title": "Criar uma conta",
+    "description": "Digite seus dados abaixo para criar sua conta",
+    "form": {
+        "username": "Usuário",
+        "username-placeholder": "Digite seu usuário",
+        "name": "Nome",
+        "name-placeholder": "Digite seu nome",
+        "email": "Email",
+        "email-placeholder": "Digite seu email",
+        "password": "Senha",
+        "submit": "Criar conta"
+    },
+    "error": {
+        "username-min": "O usuário deve ter pelo menos 2 caracteres.",
+        "username-space": "O usuário não pode conter espaços.",
+        "password-min": "A senha deve ter pelo menos 6 caracteres.",
+        "name-min": "O nome deve ter pelo menos 2 caracteres.",
+        "email-invalid": "O email deve ser válido."
+    },
+    "have-account": "Já possui uma conta?",
+    "login-account": "Entrar com conta já existente"
+}

@@ -1,0 +1,13 @@
+{
+    "title": "Join into your account",
+    "description": "Enter your login and password below to enter your account",
+    "form": {
+        "login": "Login",
+        "username": "Username",
+        "password": "Password",
+        "password-min": "Password must be at least 6 characters.",
+        "submit": "Login"
+    },
+    "no-account": "Don't have an account?",
+    "create-account": "Register here"
+}

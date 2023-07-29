@@ -1,0 +1,13 @@
+{
+    "title": "Entrar na sua conta",
+    "description": "Digite seu login e senha abaixo para entrar em sua conta",
+    "form": {
+        "login": "Entrar",
+        "username": "Usuário",
+        "password": "Senha",
+        "password-min": "A senha deve ter no mínimo 6 caracteres",
+        "submit": "Entrar"
+    },
+    "no-account": "Não possui uma conta?",
+    "create-account": "Registrar-se"
+}

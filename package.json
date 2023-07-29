@@ -24,6 +24,7 @@
         "eslint-config-next": "13.4.12",
         "next": "13.4.12",
         "next-auth": "^4.22.3",
+        "next-translate": "^2.5.2",
         "postcss": "8.4.27",
         "react": "18.2.0",
         "react-dom": "18.2.0",
@@ -33,5 +34,8 @@
         "tailwindcss-animate": "^1.0.6",
         "typescript": "5.1.6",
         "zod": "^3.21.4"
+    },
+    "devDependencies": {
+        "next-translate-plugin": "^2.5.2"
     }
 }

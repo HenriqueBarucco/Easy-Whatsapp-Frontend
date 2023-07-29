@@ -1842,6 +1842,18 @@ next-auth@^4.22.3:
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
 
+next-translate-plugin@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/next-translate-plugin/-/next-translate-plugin-2.5.2.tgz#44d81c8d791443370f8f27ec114c8c2bac69b6bc"
+  integrity sha512-I2PDkbUM91CrOYNPVxhWxfQituSN62Y6f5EQfrZwtJToWc5HqnKs9dFjyQ+VGY3EXx6rPYgK03MVNtI+pc1HBA==
+  dependencies:
+    typescript "4.5.2"
+
+next-translate@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/next-translate/-/next-translate-2.5.2.tgz#7d767099b07dd41aa534db02c8cc8a7ff8b91ad8"
+  integrity sha512-5FusT+XlQGA1BAJaYu3jP8nPs3BDe/8f1u+MVM5CmIqmwOS62jUG5svq7HB4ORC6N6mvsPd7xGi3qxWyAYtwBQ==
+
 next@13.4.12:
   version "13.4.12"
   resolved "https://registry.yarnpkg.com/next/-/next-13.4.12.tgz#809b21ea0aabbe88ced53252c88c4a5bd5af95df"
@@ -2662,6 +2674,11 @@ typed-array-length@^1.0.4:
     call-bind "^1.0.2"
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
+
+typescript@4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
+  integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
 
 typescript@5.1.6:
   version "5.1.6"

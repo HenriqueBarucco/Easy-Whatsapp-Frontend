@@ -1,0 +1,8 @@
+{
+    "account-information": {
+        "description": "Your instance is connected!"
+    },
+    "default-buttons": {
+        "logout": "Logout"
+    }
+}

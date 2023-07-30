@@ -1,0 +1,8 @@
+{
+    "account-information": {
+        "description": "Sua instância está conectada!"
+    },
+    "default-buttons": {
+        "logout": "Sair"
+    }
+}

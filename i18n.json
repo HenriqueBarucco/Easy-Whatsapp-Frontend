@@ -4,6 +4,7 @@
     "pages": {
         "*": ["common"],
         "/": ["home"],
+        "/panel": ["panel", "send-message"],
         "/login": ["login"],
         "/register": ["register"]
     }

@@ -1,0 +1,10 @@
+{
+    "form": {
+        "title": "Enviar mensagem",
+        "description": "Preencha o formulário abaixo para enviar uma mensagem.",
+        "phone-label": "Telefone",
+        "message-label": "Mensagem",
+        "submit-button": "Enviar",
+        "phone-min": "O número de telefone deve ter no mínimo 10 dígitos"
+    }
+}

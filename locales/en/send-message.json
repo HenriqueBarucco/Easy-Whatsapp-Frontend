@@ -1,0 +1,10 @@
+{
+    "form": {
+        "title": "Send Message",
+        "description": "Fill out the form below to send a text message.",
+        "phone-label": "Phone Number",
+        "message-label": "Message",
+        "submit-button": "Send Message",
+        "phone-min": "Phone number must be at least 10 digits."
+    }
+}

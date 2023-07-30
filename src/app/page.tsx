@@ -1,17 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 
 export default function Home() {
+    const { t } = useTranslation('home');
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-12 bg-background ">
             <Label className="mb-4">Easy WhatsApp</Label>
             <div className="flex gap-4">
                 <Link href={'/login'}>
-                    <Button>Login</Button>
+                    <Button>{t('login-button')}</Button>
                 </Link>
                 <Link href={'/register'}>
-                    <Button>Sign Up</Button>
+                    <Button>{t('register-button')}</Button>
                 </Link>
             </div>
         </div>

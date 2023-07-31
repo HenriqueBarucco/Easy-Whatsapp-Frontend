@@ -43,20 +43,20 @@ export default async function Panel() {
 
     return (
         <>
-            <div className="flex flex-col h-screen">
+            <div className="flex flex-col max-h-screen h-screen">
                 <div className="border-b">
                     <div className="flex h-16 items-center px-4">
-                        {/* <TeamSwitcher /> */}
                         <MainNav className="mx-6" />
                         <div className="ml-auto flex items-center space-x-4">
-                            {/* <Search /> */}
                             <UserNav profile={profile}/>
                         </div>
                     </div>
                 </div>
-                <div className="flex-1 p-8 pt-6 flex space-x-4">
-                    <ContactList />
-                    <Chat accessToken={session?.user?.access_token} chatMessages={chat['phone']?.messages}/>
+                <div className="flex-auto p-8 pt-6 h-5/6">
+                    <div className='flex flex-row h-full space-x-4'>
+                        <ContactList />
+                        <Chat accessToken={session?.user?.access_token} chatMessages={chat['phone']?.messages}/>
+                    </div>
                 </div>
             </div>
         </>

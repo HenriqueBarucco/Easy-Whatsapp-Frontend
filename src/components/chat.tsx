@@ -19,14 +19,14 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
     };
       
     return (
-        <Card className="flex flex-col w-full max-h-full">
+        <Card className="flex flex-col w-full">
             <CardHeader>
-                <CardTitle>NAME</CardTitle>
-                <CardDescription>PHONE NUMBER</CardDescription>
+                <CardTitle>Henrique Barucco</CardTitle>
+                <CardDescription>+5516900000000</CardDescription>
                 <Separator />
             </CardHeader>
-            <CardContent>
-                <ScrollArea className='h-[650px] pr-4' ref={scrollAreaRef} >
+            <CardContent className='flex-grow max-h-[calc(100%-156px)]'>
+                <ScrollArea className="h-full pr-4" ref={scrollAreaRef} >
                     <div className='space-y-4'>
                         {messages?.map((message: any, index: any) => (
                             <div

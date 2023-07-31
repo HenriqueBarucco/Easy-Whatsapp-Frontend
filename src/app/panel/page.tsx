@@ -44,9 +44,9 @@ export default async function Panel() {
     return (
         <>
             <div className="flex flex-col max-h-screen h-screen">
-                <div className="border-b">
+                <div className="border-b bg-zinc-900">
                     <div className="flex h-16 items-center px-4">
-                        <MainNav className="mx-6" />
+                        <MainNav className="mx-6 text-white" />
                         <div className="ml-auto flex items-center space-x-4">
                             <UserNav profile={profile}/>
                         </div>

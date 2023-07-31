@@ -34,14 +34,14 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
                                 className={`flex ${message.name === 'me' ? 'justify-end' : 'justify-start'}`}
                             >
                                 <div
-                                    className={`p-2 rounded ${message.name === 'me' ? 'bg-black text-white' : 'bg-blue'}`}
+                                    className={`p-2 rounded-md  ${message.name === 'me' ? 'bg-zinc-900 text-white' : 'border border-gray-800'}`}
                                 >
                                     <div className="flex items-center">
                                         <Avatar className="mr-4">
                                             <AvatarImage src="https://github.com/henriquebarucco.png" alt="@henriquebarucco" />
                                             <AvatarFallback>HB</AvatarFallback>
                                         </Avatar>
-                                        <div className="flex flex-col max-w-6xl">
+                                        <div className="flex flex-col max-w-3xl">
                                             <p className="font-semibold">{message.name}</p>
                                             <span className="whitespace-pre-wrap">{message.message}</span>
                                         </div>

@@ -3,8 +3,10 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { Logout } from '@/components/logout';
 import { QrCode } from '@/components/qrcode';
-import { AccountInformation } from '@/components/info-account';
-import { SendMessage } from '@/components/send-message';
+import { MainNav } from '@/components/main-nav';
+import { UserNav } from '@/components/user-nav';
+import { Chat } from '@/components/chat';
+import { ContactList } from '@/components/contact-list';
 
 async function fetchData(url: string, accessToken: string) {
     const response = await fetch(url, {
@@ -22,21 +24,41 @@ export default async function Panel() {
         redirect('/api/auth/signin');
     }
   
-    const [data, profile] = await Promise.all([ 
+    const [data, profile, chat] = await Promise.all([ 
         fetchData('http://localhost:8080/instance/qrbase64', session?.user?.access_token),
         fetchData('http://localhost:8080/auth/profile', session?.user?.access_token),
+        fetchData('http://localhost:8080/chat', session?.user?.access_token),
     ]);
   
     const hasQrCode = data && data?.qrcode;
-  
+
+    if (hasQrCode) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen py-12 bg-background space-y-4">
+                <QrCode qrCode={data.qrcode} />
+                <Logout />
+            </div>
+        );
+    }
+
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-12 bg-background space-y-4">
-            {hasQrCode ? <QrCode qrCode={data.qrcode} /> : 
-                <>
-                    <AccountInformation profile={profile} />
-                    <SendMessage accessToken={session?.user?.access_token} />
-                </>}
-            <Logout />
-        </div>
+        <>
+            <div className="flex flex-col h-screen">
+                <div className="border-b">
+                    <div className="flex h-16 items-center px-4">
+                        {/* <TeamSwitcher /> */}
+                        <MainNav className="mx-6" />
+                        <div className="ml-auto flex items-center space-x-4">
+                            {/* <Search /> */}
+                            <UserNav profile={profile}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex-1 p-8 pt-6 flex space-x-4">
+                    <ContactList />
+                    <Chat accessToken={session?.user?.access_token} chatMessages={chat['phone']?.messages}/>
+                </div>
+            </div>
+        </>
     );
 }

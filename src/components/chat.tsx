@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { SendMessage } from './send-message';
 import { useRef, useState } from 'react';
 import { ScrollArea } from './ui/scroll-area';
+import Image from 'next/image';
 
 export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMessages: any}) {
     const [messages, setMessages] = useState(chatMessages);
@@ -33,9 +34,10 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
                         {messages?.map((message: any, index: any) => (
                             <div key={index} className={`chat ${message.name === 'me' ? 'chat-end' : 'chat-start'}`}>
                                 <div className="chat-image avatar">
-                                    <div className="w-10 rounded-full">
-                                        <img src="https://github.com/henriquebarucco.png" alt={`@${message.name}`} />
-                                    </div>
+                                    <Avatar>
+                                        <AvatarImage src="https://github.com/henriquebarucco.png" alt="@henriquebarucco" />
+                                        <AvatarFallback>HB</AvatarFallback>
+                                    </Avatar>
                                 </div>
                                 <div className="chat-header">
                                     {message.name === 'me' ? '' : message.name}

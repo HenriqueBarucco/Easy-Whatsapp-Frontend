@@ -12,7 +12,7 @@ export function ContactList({contacts}: {contacts: any}) {
                 <Separator />
             </CardHeader>
             <CardContent className='flex-grow max-h-[calc(100%-120px)]'>
-                <ScrollArea className="h-full pr-2">
+                <ScrollArea className="h-full pr-2" scrollToEnd={false}>
                     <div className='space-y-3'>
                         {contacts?.map((contact: any, index: any) => (
                             <Card key={index}>
@@ -33,9 +33,3 @@ export function ContactList({contacts}: {contacts: any}) {
         </Card>
     );
 }
-
-const contactList = [
-    {
-        name: 'Henrique Barucco',
-    },
-];

@@ -10,12 +10,11 @@ import { ScrollArea } from './ui/scroll-area';
 
 export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMessages: any}) {
     const [messages, setMessages] = useState(chatMessages);
-    const scrollAreaRef = useRef(null);
+    const scrollArea = useRef(null) as any;
 
     const scrollToBottom = () => {
-        if (scrollAreaRef.current) {
-            scrollAreaRef.current.scrollToEnd();
-        }
+        if (!scrollArea.current) return; 
+        scrollArea.current.scrollToEnd();
     };
 
     return (
@@ -26,7 +25,7 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
                 <Separator />
             </CardHeader>
             <CardContent className='flex-grow max-h-[calc(100%-156px)]'>
-                <ScrollArea className="h-full pr-4" ref={scrollAreaRef} >
+                <ScrollArea className="h-full pr-4" scrollToEnd={true} ref={scrollArea}>
                     <div className='space-y-4'>
                         {messages?.map((message: any, index: any) => (
                             <div key={index} className={`chat ${message.name === 'me' ? 'chat-end' : 'chat-start'}`}>

@@ -2,13 +2,12 @@
 
 import * as React from 'react';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-
 import { cn } from '@/lib/utils';
 
 const ScrollArea = React.forwardRef(
-    ({ className, children, ...props }, forwardedRef) => {
+    ({ className, children, scrollToEnd, ...props }: any, forwardedRef) => {
         const viewportRef = React.useRef(null);
-        const [shouldScrollToEnd, setShouldScrollToEnd] = React.useState(true);
+        const [shouldScrollToEnd, setShouldScrollToEnd] = React.useState(scrollToEnd);
   
         React.useEffect(() => {
             if (shouldScrollToEnd) {
@@ -16,22 +15,19 @@ const ScrollArea = React.forwardRef(
             }
         }, [shouldScrollToEnd]);
   
-        // Function to scroll to the bottom
         const scrollToBottom = () => {
-            const viewport = viewportRef.current;
+            const viewport = viewportRef.current as any;
+            if (!viewport) return;
             viewport.scrollTop = viewport.scrollHeight;
         };
   
-        // Expose the scrollToBottom function through the ref
         React.useImperativeHandle(forwardedRef, () => ({
-        // Ensure the function is named "scrollToEnd" instead of "scrollToBottom"
             scrollToEnd: scrollToBottom,
         }));
   
-        // Detect when new children are added and trigger scroll to the bottom
         React.useEffect(() => {
-            setShouldScrollToEnd(true);
-        }, [children]);
+            setShouldScrollToEnd(scrollToEnd);
+        }, [children, scrollToEnd]);
   
         return (
             <ScrollAreaPrimitive.Root
@@ -42,7 +38,6 @@ const ScrollArea = React.forwardRef(
                     ref={viewportRef}
                     className="h-full w-full rounded-[inherit]"
                     onScroll={() => {
-                        // Disable auto-scroll when the user manually scrolls up
                         if (
                             viewportRef.current.scrollTop + viewportRef.current.clientHeight <
                             viewportRef.current.scrollHeight

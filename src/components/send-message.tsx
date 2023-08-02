@@ -43,7 +43,6 @@ export function SendMessage({ accessToken, messages, setMessages, scrollToBottom
 
         setTimeout(() => {
             scrollToBottom();
-            
         }, 100);
 
         

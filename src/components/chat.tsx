@@ -7,7 +7,6 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { SendMessage } from './send-message';
 import { useRef, useState } from 'react';
 import { ScrollArea } from './ui/scroll-area';
-import Image from 'next/image';
 
 export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMessages: any}) {
     const [messages, setMessages] = useState(chatMessages);
@@ -19,8 +18,6 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
         }
     };
 
-    console.log(messages);
-      
     return (
         <Card className="flex flex-col w-full">
             <CardHeader>

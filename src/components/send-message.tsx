@@ -3,8 +3,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import useTranslation from 'next-translate/useTranslation';
 
 export function SendMessage({ accessToken, messages, setMessages, scrollToBottom }: { accessToken: string, messages: any, setMessages: any, scrollToBottom: any}) {
@@ -39,7 +37,7 @@ export function SendMessage({ accessToken, messages, setMessages, scrollToBottom
             {
                 name: 'me',
                 message: data.message,
-                messageTimestamp: new Date().toISOString()
+                messageTimestamp: new Date().getTime() / 1000
             }
         ]);
 
@@ -53,19 +51,10 @@ export function SendMessage({ accessToken, messages, setMessages, scrollToBottom
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className='flex w-full space-x-2'>
-            <div className='w-full'>
-                <Input
-                    id="message"
-                    type="text"
-                    placeholder='Type your message here.'
-                    {...register('message', { required: t('form.phone-required') })}
-                />
-            </div>
-            <div>
-                <Button className="w-full" type="submit">
-                    {t('form.submit-button')}
-                </Button>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex w-full'>
+            <div className="w-full join">
+                <input className="input input-bordered join-item w-full" placeholder="Type your message here." type='text' {...register('message')}/>
+                <button className="btn btn-neutral join-item rounded-r-full" type="submit">{t('form.submit-button')}</button>
             </div>
         </form>
     );

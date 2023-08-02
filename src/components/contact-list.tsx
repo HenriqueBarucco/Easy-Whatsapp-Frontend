@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { ScrollArea } from './ui/scroll-area';
 import { Separator } from './ui/separator';
 
-export function ContactList() {
+export function ContactList({contacts}: {contacts: any}) {
     return (
         <Card className="flex flex-col w-[350px]">
             <CardHeader>
@@ -14,7 +14,7 @@ export function ContactList() {
             <CardContent className='flex-grow max-h-[calc(100%-120px)]'>
                 <ScrollArea className="h-full pr-2">
                     <div className='space-y-3'>
-                        {contactList?.map((contact: any, index: any) => (
+                        {contacts?.map((contact: any, index: any) => (
                             <Card key={index}>
                                 <CardHeader className='p-1'>
                                     <CardTitle className='flex flex-row items-center'>
@@ -22,7 +22,7 @@ export function ContactList() {
                                             <AvatarImage src="https://github.com/henriquebarucco.png" alt="@henriquebarucco" />
                                             <AvatarFallback>HB</AvatarFallback>
                                         </Avatar>
-                                        <span className="justify-center text-center">{contact.name}</span>
+                                        <span className="justify-center text-center">{contact.name ? contact.name : contact.phone}</span>
                                     </CardTitle>
                                 </CardHeader>
                             </Card>

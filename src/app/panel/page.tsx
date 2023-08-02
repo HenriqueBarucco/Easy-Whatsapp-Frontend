@@ -24,10 +24,11 @@ export default async function Panel() {
         redirect('/api/auth/signin');
     }
   
-    const [data, profile, chat] = await Promise.all([ 
+    const [data, profile, chat, contacts] = await Promise.all([ 
         fetchData('http://localhost:8080/instance/qrbase64', session?.user?.access_token),
         fetchData('http://localhost:8080/auth/profile', session?.user?.access_token),
         fetchData('http://localhost:8080/chat', session?.user?.access_token),
+        fetchData('http://localhost:8080/chat/contacts', session?.user?.access_token)
     ]);
   
     const hasQrCode = data && data?.qrcode;
@@ -54,7 +55,7 @@ export default async function Panel() {
                 </div>
                 <div className="flex-auto p-8 pt-6 h-5/6">
                     <div className='flex flex-row h-full space-x-4'>
-                        <ContactList />
+                        <ContactList contacts={contacts}/>
                         <Chat accessToken={session?.user?.access_token} chatMessages={chat['phone']?.messages}/>
                     </div>
                 </div>

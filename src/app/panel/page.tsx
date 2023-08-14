@@ -5,8 +5,7 @@ import { Logout } from '@/components/logout';
 import { QrCode } from '@/components/qrcode';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
-import { Chat } from '@/components/chat';
-import { ContactList } from '@/components/contact-list';
+import ChatPanel from '@/components/chat-panel';
 
 async function fetchData(url: string, accessToken: string) {
     const response = await fetch(url, {
@@ -54,10 +53,7 @@ export default async function Panel() {
                     </div>
                 </div>
                 <div className="flex-auto p-8 pt-6 h-5/6">
-                    <div className='flex flex-row h-full space-x-4'>
-                        <ContactList contacts={contacts}/>
-                        <Chat accessToken={session?.user?.access_token} chatMessages={chat['phone']?.messages}/>
-                    </div>
+                    <ChatPanel token={session?.user?.access_token} contacts={contacts} chats={chat} />
                 </div>
             </div>
         </>

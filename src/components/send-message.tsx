@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import useTranslation from 'next-translate/useTranslation';
 
-export function SendMessage({ accessToken, messages, setMessages, scrollToBottom }: { accessToken: string, messages: any, setMessages: any, scrollToBottom: any}) {
+export function SendMessage({ accessToken, contact, setMessages }: { accessToken: string, contact: any, setMessages: any}) {
     const { t } = useTranslation('send-message');
     
     const formSchema = z.object({
@@ -28,23 +28,19 @@ export function SendMessage({ accessToken, messages, setMessages, scrollToBottom
                 'Authorization': 'Bearer ' + accessToken
             },
             body: JSON.stringify({
-                phone: 'phone',
+                phone: contact?.number,
                 message: data.message
             })
         });
-        setMessages([
-            ...messages,
+
+        setMessages((prevMessages: any) => [...prevMessages, 
             {
                 name: 'me',
                 message: data.message,
                 messageTimestamp: new Date().getTime() / 1000
             }
         ]);
-
-        setTimeout(() => {
-            scrollToBottom();
-        }, 100);
-        
+    
         reset();
     };
 

@@ -2,14 +2,13 @@
 
 import { Separator } from '@radix-ui/react-dropdown-menu';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
-//import useTranslation from 'next-translate/useTranslation';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { SendMessage } from './send-message';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ScrollArea } from './ui/scroll-area';
 
-export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMessages: any}) {
-    const [messages, setMessages] = useState(chatMessages);
+export function Chat({ accessToken, chatMessages, contact }: { accessToken: any, chatMessages: any[], contact: any}) {
+    const [messages, setMessages] = useState<any[]>(chatMessages);
     const scrollArea = useRef(null) as any;
 
     const scrollToBottom = () => {
@@ -17,11 +16,27 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
         scrollArea.current.scrollToEnd();
     };
 
+    useEffect(() => {
+        setMessages(chatMessages);
+    }, [chatMessages]);
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    if (contact === null) {
+        return (
+            <p className='flex justify-center text-center items-center h-full w-full'>
+                Select a contact to start chatting.
+            </p>
+        );
+    }
+
     return (
         <Card className="flex flex-col w-full">
             <CardHeader>
-                <CardTitle>Henrique Barucco</CardTitle>
-                <CardDescription>+5516900000000</CardDescription>
+                <CardTitle>{contact?.name || 'Unknown'}</CardTitle>
+                <CardDescription>{contact?.phone}</CardDescription>
                 <Separator />
             </CardHeader>
             <CardContent className='flex-grow max-h-[calc(100%-156px)]'>
@@ -31,7 +46,7 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
                             <div key={index} className={`chat ${message.name === 'me' ? 'chat-end' : 'chat-start'}`}>
                                 <div className="chat-image avatar">
                                     <Avatar>
-                                        <AvatarImage src="https://github.com/henriquebarucco.png" alt="@henriquebarucco" />
+                                        <AvatarImage src={message.name !== 'me' ? contact?.picture : ''} alt="me" />
                                         <AvatarFallback>HB</AvatarFallback>
                                     </Avatar>
                                 </div>
@@ -44,12 +59,11 @@ export function Chat({ accessToken, chatMessages }: { accessToken: any, chatMess
                                 </div>
                             </div>
                         ))}
-
                     </div>
                 </ScrollArea>
             </CardContent>
             <CardFooter>
-                <SendMessage accessToken={accessToken} messages={messages} setMessages={setMessages} scrollToBottom={scrollToBottom}/>
+                <SendMessage accessToken={accessToken} contact={contact} setMessages={setMessages} />
             </CardFooter>
         </Card>
     );

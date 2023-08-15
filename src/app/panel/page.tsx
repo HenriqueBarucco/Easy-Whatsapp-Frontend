@@ -24,10 +24,10 @@ export default async function Panel() {
     }
   
     const [data, profile, chat, contacts] = await Promise.all([ 
-        fetchData('http://localhost:8080/instance/qrbase64', session?.user?.access_token),
-        fetchData('http://localhost:8080/auth/profile', session?.user?.access_token),
-        fetchData('http://localhost:8080/chat', session?.user?.access_token),
-        fetchData('http://localhost:8080/chat/contacts', session?.user?.access_token)
+        fetchData('http://backend:8080/instance/qrbase64', session?.user?.access_token),
+        fetchData('http://backend:8080/auth/profile', session?.user?.access_token),
+        fetchData('http://backend:8080/chat', session?.user?.access_token),
+        fetchData('http://backend:8080/chat/contacts', session?.user?.access_token)
     ]);
   
     const hasQrCode = data && data?.qrcode;

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 const ScrollArea = React.forwardRef(
     ({ className, children, scrollToEnd, ...props }: any, forwardedRef) => {
-        const viewportRef = React.useRef(null);
+        const viewportRef = React.useRef(null) as any;
         const [shouldScrollToEnd, setShouldScrollToEnd] = React.useState(scrollToEnd);
   
         React.useEffect(() => {

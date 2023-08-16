@@ -14,7 +14,7 @@ export function LoginAccount() {
     const { t } = useTranslation('login');
     
     const formSchema = z.object({
-        username: z.string(),
+        username: z.string().min(1, { message: t('form.username-min') }),
         password: z.string().min(6, {
             message: t('form.password-min'),
         }),
@@ -58,6 +58,7 @@ export function LoginAccount() {
                             type="text"
                             {...register('username', { required: 'Username is required' })}
                         />
+                        {errors.username && <span className="text-red-500 text-xs">{errors.username.message?.toString()}</span>}
                     </div>
                     <div>
                         <Label htmlFor="password">{t('form.password')}</Label>
@@ -66,7 +67,7 @@ export function LoginAccount() {
                             type="password"
                             {...register('password', { required: 'Password is required' })}
                         />
-                        {errors.password && <span className="text-red-500">{errors.password.message?.toString()}</span>}
+                        {errors.password && <span className="text-red-500 text-xs">{errors.password.message?.toString()}</span>}
                     </div>
                     <div>
                         <Button className="w-full" type="submit">

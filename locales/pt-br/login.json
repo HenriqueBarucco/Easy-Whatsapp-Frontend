@@ -6,6 +6,7 @@
         "username": "Usuário",
         "password": "Senha",
         "password-min": "A senha deve ter no mínimo 6 caracteres",
+        "username-min": "O usuário não pode ser vazio",
         "submit": "Entrar"
     },
     "no-account": "Não possui uma conta?",

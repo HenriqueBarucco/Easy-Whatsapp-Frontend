@@ -5,9 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { ScrollArea } from './ui/scroll-area';
 import { Separator } from './ui/separator';
 
-export function ContactList({contacts, selectContact}: {contacts: any, selectContact: any}) {
+export function ContactList({contacts, selectContact}: {contacts: any[], selectContact: any}) {
+    /* console.log(typeof contacts);
+    console.log(contacts); */
     return (
-        <Card className="flex flex-col w-[350px]">
+        <Card className="flex flex-col w-[350px] bg-base-300">
             <CardHeader>
                 <CardTitle>Chats</CardTitle>
                 <CardDescription>Send a message to one of your chats.</CardDescription>

@@ -61,7 +61,7 @@ export function CreateAccount() {
                             placeholder={t('form.username-placeholder')}
                             {...register('username', { required: 'Username is required' })}
                         />
-                        {errors.username && <span className="text-red-500">{errors.username.message?.toString()}</span>}
+                        {errors.username && <span className="text-red-500 text-xs">{errors.username.message?.toString()}</span>}
                     </div>
                     <div>
                         <Label htmlFor="name">{t('form.name')}</Label>
@@ -71,7 +71,7 @@ export function CreateAccount() {
                             placeholder={t('form.name-placeholder')}
                             {...register('name', { required: 'Name is required' })}
                         />
-                        {errors.name && <span className="text-red-500">{errors.name.message?.toString()}</span>}
+                        {errors.name && <span className="text-red-500 text-xs">{errors.name.message?.toString()}</span>}
                     </div>
                     <div>
                         <Label htmlFor="email">{t('form.email')}</Label>
@@ -81,7 +81,7 @@ export function CreateAccount() {
                             placeholder={t('form.email-placeholder')}
                             {...register('email', { required: 'Email is required' })}
                         />
-                        {errors.email && <span className="text-red-500">{errors.email.message?.toString()}</span>}
+                        {errors.email && <span className="text-red-500 text-xs">{errors.email.message?.toString()}</span>}
                     </div>
                     <div>
                         <Label htmlFor="password">{t('form.password')}</Label>
@@ -90,7 +90,7 @@ export function CreateAccount() {
                             type="password"
                             {...register('password', { required: 'Password is required' })}
                         />
-                        {errors.password && <span className="text-red-500">{errors.password.message?.toString()}</span>}
+                        {errors.password && <span className="text-red-500 text-xs">{errors.password.message?.toString()}</span>}
                     </div>
                     <div>
                         <Button className="w-full" type="submit">

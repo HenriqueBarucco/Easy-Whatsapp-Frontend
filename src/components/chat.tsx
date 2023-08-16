@@ -33,7 +33,7 @@ export function Chat({ accessToken, chatMessages, contact }: { accessToken: any,
     }
 
     return (
-        <Card className="flex flex-col w-full">
+        <Card className="flex flex-col w-full bg-base-300">
             <CardHeader>
                 <CardTitle>{contact?.name || 'Unknown'}</CardTitle>
                 <CardDescription>{contact?.phone}</CardDescription>

@@ -7,8 +7,8 @@ export default function Home() {
     const { t } = useTranslation('home');
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-12 bg-background ">
-            <Label className="mb-4">Easy WhatsApp</Label>
+        <div className="flex flex-col items-center justify-center min-h-screen py-12 bg-base-100 ">
+            <Label className="mb-4 text-inherit">Easy WhatsApp</Label>
             <div className="flex gap-4">
                 <Link href={'/login'}>
                     <Button>{t('login-button')}</Button>

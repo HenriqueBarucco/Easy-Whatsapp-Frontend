@@ -21,14 +21,14 @@ export function SendMessage({ accessToken, contact, setMessages }: { accessToken
     });
 
     const onSubmit = (data: any) => {
-        fetch('http://backend:8080/message/text', {
+        fetch('http://localhost:8080/message/text', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + accessToken
             },
             body: JSON.stringify({
-                phone: contact?.number,
+                phone: contact.phone,
                 message: data.message
             })
         });

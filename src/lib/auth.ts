@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
             async authorize(credentials) {
                 try {
                     const response = await axios.post(
-                        'http://backend:8080/auth/login',
+                        'http://localhost:8080/auth/login',
                         credentials
                     );
                     return response.data;

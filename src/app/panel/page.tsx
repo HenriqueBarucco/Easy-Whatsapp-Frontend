@@ -6,6 +6,7 @@ import { QrCode } from '@/components/qrcode';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import ChatPanel from '@/components/chat-panel';
+import RealTimeComponent from '@/components/real-time';
 
 async function fetchData(url: string, accessToken: string) {
     const response = await fetch(url, {
@@ -24,10 +25,10 @@ export default async function Panel() {
     }
   
     const [data, profile, chat, contacts] = await Promise.all([ 
-        fetchData('http://backend:8080/instance/qrbase64', session?.user?.access_token),
-        fetchData('http://backend:8080/auth/profile', session?.user?.access_token),
-        fetchData('http://backend:8080/chat', session?.user?.access_token),
-        fetchData('http://backend:8080/chat/contacts', session?.user?.access_token)
+        fetchData('http://localhost:8080/instance/qrbase64', session?.user?.access_token),
+        fetchData('http://localhost:8080/auth/profile', session?.user?.access_token),
+        fetchData('http://localhost:8080/chat', session?.user?.access_token),
+        fetchData('http://localhost:8080/chat/contacts', session?.user?.access_token)
     ]);
   
     const hasQrCode = data && data?.qrcode;
@@ -53,6 +54,7 @@ export default async function Panel() {
                     </div>
                 </div>
                 <div className="flex-auto p-8 pt-6 h-5/6">
+                    <RealTimeComponent/>
                     <ChatPanel token={session?.user?.access_token} contacts={contacts} chats={chat} />
                 </div>
             </div>

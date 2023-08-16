@@ -23,12 +23,11 @@ export default async function Panel() {
     if (!session) {
         redirect('/api/auth/signin');
     }
+
+    const API = process.env.API_URL || 'http://localhost:8080';
   
-    const [data, profile, chat, contacts] = await Promise.all([ 
-        fetchData('http://localhost:8080/instance/qrbase64', session?.user?.access_token),
-        fetchData('http://localhost:8080/auth/profile', session?.user?.access_token),
-        fetchData('http://localhost:8080/chat', session?.user?.access_token),
-        fetchData('http://localhost:8080/chat/contacts', session?.user?.access_token)
+    const [data] = await Promise.all([ 
+        fetchData(`${API}/instance/qrbase64`, session?.user?.access_token),
     ]);
   
     const hasQrCode = data && data?.qrcode;
@@ -41,6 +40,12 @@ export default async function Panel() {
             </div>
         );
     }
+
+    const [profile, chat, contacts] = await Promise.all([ 
+        fetchData(`${API}/auth/profile`, session?.user?.access_token),
+        fetchData(`${API}/chat`, session?.user?.access_token),
+        fetchData(`${API}/chat/contacts`, session?.user?.access_token)
+    ]);
 
     return (
         <>

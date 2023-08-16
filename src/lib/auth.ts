@@ -18,8 +18,9 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials) {
                 try {
+                    const API = process.env.API_URL || 'http://localhost:8080';
                     const response = await axios.post(
-                        'http://localhost:8080/auth/login',
+                        `${API}/auth/login`,
                         credentials
                     );
                     return response.data;

@@ -21,7 +21,8 @@ export function SendMessage({ accessToken, contact, setMessages }: { accessToken
     });
 
     const onSubmit = (data: any) => {
-        fetch('http://localhost:8080/message/text', {
+        const API = process.env.API_URL || 'http://localhost:8080';
+        fetch(`${API}/message/text`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

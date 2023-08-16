@@ -4,5 +4,11 @@
     },
     "default-buttons": {
         "logout": "Sair"
+    },
+    "components": {
+        "send-message": {
+            "placeholder": "Digite sua mensagem aqui...",
+            "send": "Enviar"
+        }
     }
 }

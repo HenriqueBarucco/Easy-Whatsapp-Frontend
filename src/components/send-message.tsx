@@ -6,10 +6,10 @@ import * as z from 'zod';
 import useTranslation from 'next-translate/useTranslation';
 
 export function SendMessage({ accessToken, contact, setMessages }: { accessToken: string, contact: any, setMessages: any}) {
-    const { t } = useTranslation('send-message');
+    const { t } = useTranslation('common');
     
     const formSchema = z.object({
-        message: z.string()
+        message: z.string().min(1)
     });
 
     const {
@@ -48,8 +48,8 @@ export function SendMessage({ accessToken, contact, setMessages }: { accessToken
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='flex w-full'>
             <div className="w-full join">
-                <input className="input input-bordered join-item w-full" placeholder="Type your message here." type='text' {...register('message')}/>
-                <button className="btn btn-neutral join-item rounded-r-full" type="submit">{t('form.submit-button')}</button>
+                <input className="input input-bordered join-item w-full" placeholder={t('components.send-message.placeholder')} type='text' {...register('message')}/>
+                <button className="btn btn-neutral join-item rounded-r-full" type="submit">{t('components.send-message.send')}</button>
             </div>
         </form>
     );

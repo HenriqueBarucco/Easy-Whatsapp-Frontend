@@ -5,6 +5,7 @@
         "phone-label": "Telefone",
         "message-label": "Mensagem",
         "submit-button": "Enviar",
+        "message-text": "Digite sua mensagem aqui...",
         "phone-min": "O número de telefone deve ter no mínimo 10 dígitos"
     }
 }

@@ -38,6 +38,7 @@ export const authOptions: NextAuthOptions = {
                 user: {
                     ...session.user,
                     access_token: token.access_token,
+                    key: token.key,
                 },
             };
         },
@@ -47,6 +48,7 @@ export const authOptions: NextAuthOptions = {
                 return {
                     ...token,
                     access_token: u.access_token,
+                    key: u.key,
                 };
             }
             return token;

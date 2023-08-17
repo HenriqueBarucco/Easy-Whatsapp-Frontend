@@ -1,13 +1,18 @@
 import { io } from 'socket.io-client';
 
-const socket = io(process.env.API_URL || 'http://localhost:8080');
+let socketInstance: any = null;
 
-socket.on('connect', () => {
-    //console.log('Conectado ao servidor de WebSocket');
-});
+const initSocket = async (key: string) => {
+    const socket = io(process.env.API_URL || 'http://localhost:8080', {
+        query: { key },
+    });
 
-/* return () => {
-    socket.disconnect();
-}; */
+    return socket;
+};
 
-export default socket;
+export const getSocketInstance = async (key: string) => {
+    if (!socketInstance) {
+        socketInstance = await initSocket(key);
+    }
+    return socketInstance;
+};

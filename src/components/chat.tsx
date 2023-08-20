@@ -4,11 +4,10 @@ import { Separator } from '@radix-ui/react-dropdown-menu';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { SendMessage } from './send-message';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { ScrollArea } from './ui/scroll-area';
 
-export function Chat({ accessToken, chatMessages, contact }: { accessToken: any, chatMessages: any[], contact: any}) {
-    const [messages, setMessages] = useState<any[]>(chatMessages);
+export function Chat({ accessToken, chatMessages, contact, setMessages }: { accessToken: any, chatMessages: any[], contact: any, setMessages: any}) {
     const scrollArea = useRef(null) as any;
 
     const scrollToBottom = () => {
@@ -17,12 +16,8 @@ export function Chat({ accessToken, chatMessages, contact }: { accessToken: any,
     };
 
     useEffect(() => {
-        setMessages(chatMessages);
-    }, [chatMessages]);
-
-    useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [chatMessages]);
 
     if (contact === null) {
         return (
@@ -42,7 +37,7 @@ export function Chat({ accessToken, chatMessages, contact }: { accessToken: any,
             <CardContent className='flex-grow max-h-[calc(100%-156px)]'>
                 <ScrollArea className="h-full pr-4" scrollToEnd={true} ref={scrollArea}>
                     <div className='space-y-4'>
-                        {messages?.map((message: any, index: any) => (
+                        {chatMessages?.map((message: any, index: any) => (
                             <div key={index} className={`chat ${message.name === 'me' ? 'chat-end' : 'chat-start'}`}>
                                 <div className="chat-image avatar">
                                     <Avatar>
@@ -51,7 +46,7 @@ export function Chat({ accessToken, chatMessages, contact }: { accessToken: any,
                                     </Avatar>
                                 </div>
                                 <div className="chat-header">
-                                    {message.name === 'me' ? '' : message.name}
+                                    {message.name === 'me' ? '' : message.name + ' '}
                                     <time className="text-xs opacity-50">{new Date(message.messageTimestamp * 1000).toLocaleTimeString()}</time>
                                 </div>
                                 <div className="chat-bubble">

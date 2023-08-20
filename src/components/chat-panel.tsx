@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 
 export default function ChatPanel({token, chats, contacts}: any) {
     const [contact, setContact] = useState<any>(null);
-    const [messages, setMessages] = useState<any>([]);
+    const [messages, setMessages] = useState<any[]>(chats);
     const router = useRouter();
     const session = useSession() as any;
 
@@ -22,7 +22,16 @@ export default function ChatPanel({token, chats, contacts}: any) {
             });
 
             socket.on('message', (message: any) => {
-                setMessages((messages: any) => [...messages, message]);
+                setMessages((prevMessages: any) => {
+                    const phoneNumber = message.phone;
+                    const updatedMessages = {
+                        ...prevMessages,
+                        [phoneNumber]: {
+                            messages: [...(prevMessages[phoneNumber]?.messages || []), message],
+                        },
+                    };
+                    return updatedMessages;
+                });
             });
         };
     
@@ -36,8 +45,7 @@ export default function ChatPanel({token, chats, contacts}: any) {
     return (
         <div className='flex flex-row h-full space-x-4'>
             <ContactList contacts={contacts || []} selectContact={selectContact} />
-            <Chat accessToken={token} chatMessages={chats[contact?.phone]?.messages || []} contact={contact}/>
-            <p>{JSON.stringify(messages)}</p>
+            <Chat accessToken={token} chatMessages={messages[contact?.phone]?.messages || []} contact={contact} setMessages={setMessages}/>
         </div>
     );
 }

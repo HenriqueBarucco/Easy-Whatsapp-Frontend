@@ -34,13 +34,19 @@ export function SendMessage({ accessToken, contact, setMessages }: { accessToken
             })
         });
 
-        setMessages((prevMessages: any) => [...prevMessages, 
-            {
-                name: 'me',
-                message: data.message,
-                messageTimestamp: new Date().getTime() / 1000
-            }
-        ]);
+        setMessages((prevMessages: any) => {
+            const updatedMessages = {
+                ...prevMessages,
+                [contact.phone]: {
+                    messages: [...(prevMessages[contact.phone]?.messages || []), {
+                        name: 'me',
+                        message: data.message,
+                        messageTimestamp: new Date().getTime() / 1000
+                    }],
+                },
+            };
+            return updatedMessages;
+        });
     
         reset();
     };

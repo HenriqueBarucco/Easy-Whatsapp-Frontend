@@ -1,3 +1,4 @@
+import { API } from '@/lib/api';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -17,7 +18,7 @@ export function MainNav({
                 Chat
             </Link>
             <Link
-                href="http://localhost:8080"
+                href={API}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
                 API

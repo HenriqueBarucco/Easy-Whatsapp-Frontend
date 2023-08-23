@@ -6,6 +6,7 @@ import { QrCode } from '@/components/qrcode';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import ChatPanel from '@/components/chat-panel';
+import { API } from '@/lib/api';
 
 async function fetchData(url: string, accessToken: string) {
     const response = await fetch(url, {
@@ -23,8 +24,6 @@ export default async function Panel() {
         redirect('/api/auth/signin');
     }
 
-    const API = process.env.API_URL || 'http://localhost:8080';
-  
     const [data] = await Promise.all([ 
         fetchData(`${API}/instance/qrbase64`, session?.user?.access_token),
     ]);

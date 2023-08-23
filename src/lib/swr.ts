@@ -1,8 +1,9 @@
 import useSWR from 'swr';
 import axios from 'axios';
+import { API } from './api';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: API,
 });
 
 const fetcher = async (url: string, token: string) => {

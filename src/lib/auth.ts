@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import axios from 'axios';
+import { API } from './api';
 
 export const authOptions: NextAuthOptions = {
     session: {
@@ -19,7 +20,6 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials) {
                 try {
-                    const API = process.env.API_URL || 'http://localhost:8080';
                     const response = await axios.post(
                         `${API}/auth/login`,
                         credentials

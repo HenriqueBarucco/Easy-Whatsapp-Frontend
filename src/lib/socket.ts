@@ -4,7 +4,8 @@ let socketInstance: any = null;
 
 const initSocket = async (key: string) => {
     const socket = io(
-        process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080',
+        process.env.API_URL ||
+            'https://easy-whatsapp-api.henriquebarucco.com.br',
         {
             query: { key },
         }

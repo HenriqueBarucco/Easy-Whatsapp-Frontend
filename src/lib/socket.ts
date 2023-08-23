@@ -1,9 +1,10 @@
 import { io } from 'socket.io-client';
+import { API } from './api';
 
 let socketInstance: any = null;
 
 const initSocket = async (key: string) => {
-    const socket = io('https://easy-whatsapp-api.henriquebarucco.com.br', {
+    const socket = io(API, {
         query: { key },
     });
 

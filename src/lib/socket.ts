@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 let socketInstance: any = null;
 
 const initSocket = async (key: string) => {
-    const socket = io(process.env.API_URL || 'http://localhost:8080', {
+    const socket = io('https://easy-whatsapp-api.henriquebarucco.com.br', {
         query: { key },
     });
 

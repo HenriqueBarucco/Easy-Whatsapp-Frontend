@@ -11,6 +11,6 @@ module.exports = nextTranslate({
         ],
     },
     env: {
-        API_URL: process.env.API_URL || 'http://localhost:8080',
+        API_URL: process.env.API_URL,
     },
 });

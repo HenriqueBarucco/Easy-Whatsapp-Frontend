@@ -1,12 +1,14 @@
 import { io } from 'socket.io-client';
-import { API } from './api';
 
 let socketInstance: any = null;
 
 const initSocket = async (key: string) => {
-    const socket = io(API, {
-        query: { key },
-    });
+    const socket = io(
+        process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080',
+        {
+            query: { key },
+        }
+    );
 
     return socket;
 };

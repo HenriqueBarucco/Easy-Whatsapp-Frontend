@@ -7,6 +7,7 @@ import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import ChatPanel from '@/components/chat-panel';
 import { API } from '@/lib/api';
+import ChangeDarkmode from '@/components/change-darkmode';
 
 async function fetchData(url: string, accessToken: string) {
     const response = await fetch(url, {
@@ -56,6 +57,7 @@ export default async function Panel() {
                     <div className="flex h-16 items-center px-4">
                         <MainNav className="mx-6 text-white" />
                         <div className="ml-auto flex items-center space-x-4">
+                            <ChangeDarkmode/>
                             <UserNav profile={profile}/>
                         </div>
                     </div>

@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextTranslate = require('next-translate-plugin');
-
-module.exports = nextTranslate({
+module.exports = {
     images: {
         remotePatterns: [
             {
@@ -10,12 +8,4 @@ module.exports = nextTranslate({
             },
         ],
     },
-    i18n: {
-        locales: ['pt-br', 'en'],
-        defaultLocale: 'pt-br',
-        localeDetection: false,
-    },
-    experimental: {
-        instrumentationHook: true,
-    },
-});
+};

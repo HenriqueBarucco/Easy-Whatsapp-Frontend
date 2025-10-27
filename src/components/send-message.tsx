@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import useTranslation from 'next-translate/useTranslation';
+import useTranslation from '@/lib/i18n';
 import { API } from '@/lib/api';
 
 export function SendMessage({ accessToken, contact, setMessages }: { accessToken: string, contact: any, setMessages: any}) {

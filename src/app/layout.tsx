@@ -2,7 +2,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { NextAuthProvider } from './provider';
-import LanguageSelector from './components/language-selector';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,9 +18,6 @@ export default function RootLayout({
     return (
         <html lang="pt-BR">
             <body className={inter.className}>
-                <div className="absolute top-4 right-4 z-50">
-                    <LanguageSelector />
-                </div>
                 <NextAuthProvider>{children}</NextAuthProvider>
             </body>
         </html>

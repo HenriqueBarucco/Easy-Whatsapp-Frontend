@@ -1,6 +1,6 @@
 'use client';
 
-import useTranslation from 'next-translate/useTranslation';
+import useTranslation from '@/lib/i18n';
 import { Button } from './ui/button';
 import { signOut } from 'next-auth/react';
 

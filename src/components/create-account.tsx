@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import useTranslation from 'next-translate/useTranslation';
+import useTranslation from '@/lib/i18n';
 
 export function CreateAccount() {
     const { t } = useTranslation('register');

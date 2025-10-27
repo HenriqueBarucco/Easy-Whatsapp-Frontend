@@ -1,6 +1,6 @@
 'use client';
 
-import useTranslation from 'next-translate/useTranslation';
+import useTranslation from '@/lib/i18n';
 import { Separator } from './ui/separator';
 
 export function AccountInformation({ profile }: { profile: any}) {

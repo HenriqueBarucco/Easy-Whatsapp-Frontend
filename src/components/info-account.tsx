@@ -1,3 +1,5 @@
+'use client';
+
 import useTranslation from 'next-translate/useTranslation';
 import { Separator } from './ui/separator';
 

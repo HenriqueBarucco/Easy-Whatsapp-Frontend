@@ -10,4 +10,12 @@ module.exports = nextTranslate({
             },
         ],
     },
+    i18n: {
+        locales: ['pt-br', 'en'],
+        defaultLocale: 'pt-br',
+        localeDetection: false,
+    },
+    experimental: {
+        instrumentationHook: true,
+    },
 });

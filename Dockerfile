@@ -20,7 +20,7 @@ COPY --from=builder /app/pnpm-lock.yaml ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
-COPY --from=build /app/next.config.js ./
+COPY --from=builder /app/next.config.js ./
 
 EXPOSE 3000
 
